@@ -60,9 +60,9 @@ ENTRY(__bionic_clone)
     neg     r0, r0
     b       __set_errno_internal
 
-    # The child.
+1:  # The child.
     # Setting lr to 0 will make the unwinder stop at __start_thread
-1:  mov    lr, #0
+    mov    lr, #0
     # Call __start_thread with the 'fn' and 'arg' we stored on the child stack.
     pop    {r0, r1}
     b      __start_thread
